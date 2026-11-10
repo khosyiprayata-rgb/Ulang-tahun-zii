@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Happy Birthday, Azizah!</title>
+    <meta
+      name="description"
+      content="Hadiah ulang tahun kecil dari Khosyi untuk Azizah."
+    />
+    <meta name="theme-color" content="#ffeaf1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=Quicksand:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="locked">
+    <!-- ====== Kumpulan dekorasi SVG (dipakai berulang) ====== -->
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <defs>
+        <symbol id="i-flower" viewBox="0 0 100 100">
+          <g style="fill: var(--petal, #ffb9d3)">
+            <ellipse cx="50" cy="26" rx="14" ry="22" />
+            <ellipse
+              cx="50"
+              cy="26"
+              rx="14"
+              ry="22"
+              transform="rotate(72 50 50)"
+            />
+            <ellipse
+              cx="50"
+              cy="26"
+              rx="14"
+              ry="22"
+              transform="rotate(144 50 50)"
+            />
+            <ellipse
+              cx="50"
+              cy="26"
+              rx="14"
+              ry="22"
+              transform="rotate(216 50 50)"
+            />
+            <ellipse
+              cx="50"
+              cy="26"
+              rx="14"
+              ry="22"
+              transform="rotate(288 50 50)"
+            />
+          </g>
+          <circle cx="50" cy="50" r="11" style="fill: var(--center, #ffe08a)" />
+          <circle cx="46" cy="47" r="2.4" fill="#fff" opacity=".7" />
+        </symbol>
+        <symbol id="i-heart" viewBox="0 0 100 100">
+          <path
+            style="fill: var(--c, #ff8fb8)"
+            d="M50 90C10 60 4 30 26 20c12-5 21 2 24 10 3-8 12-15 24-10 22 10 16 40-24 70z"
+          />
+        </symbol>
+        <symbol id="i-star" viewBox="0 0 100 100">
+          <path
+            style="fill: var(--c, #ffe08a)"
+            d="M50 4C53 34 66 47 96 50 66 53 53 66 50 96 47 66 34 53 4 50 34 47 47 34 50 4z"
+          />
+        </symbol>
+        <symbol id="i-bow" viewBox="0 0 100 70">
+          <g style="fill: var(--ribbon, #ff8fb8)">
+            <path d="M50 30C32 4 4 6 7 27c2 21 29 17 43 3z" />
+            <path d="M50 30C68 4 96 6 93 27c-2 21-29 17-43 3z" />
+            <path
+              d="M45 34 33 66l13-9 4 11V36zM55 34l12 32-13-9-4 11V36z"
+              opacity=".85"
+            />
+          </g>
+          <path
+            d="M50 30C36 14 18 13 15 24c-1 8 14 8 35 6z"
+            fill="#fff"
+            opacity=".25"
+          />
+          <circle cx="50" cy="31" r="8" style="fill: var(--knot, #ff6fa3)" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <canvas id="confetti" aria-hidden="true"></canvas>
+    <div id="floaters" aria-hidden="true"></div>
+
+    <!-- ====== 1. HALAMAN PEMBUKA ====== -->
+    <section id="intro" class="intro" aria-labelledby="introTitle">
+      <svg class="deco flower f-a" style="--petal: #ffc6dc">
+        <use href="#i-flower" />
+      </svg>
+      <svg class="deco flower f-b" style="--petal: #ffd9e8">
+        <use href="#i-flower" />
+      </svg>
+      <svg class="deco flower f-c" style="--petal: #ffb9d3">
+        <use href="#i-flower" />
+      </svg>
+      <svg class="deco flower f-d" style="--petal: #ffe3ee">
+        <use href="#i-flower" />
+      </svg>
+      <svg class="deco heart h-a"><use href="#i-heart" /></svg>
+      <svg class="deco heart h-b" style="--c: #ffb3cf">
+        <use href="#i-heart" />
+      </svg>
+      <svg class="deco star s-a"><use href="#i-star" /></svg>
+      <svg class="deco star s-b" style="--c: #ffd0e2">
+        <use href="#i-star" />
+      </svg>
+
+      <div class="intro-inner">
+        <svg class="bow-top" aria-hidden="true"><use href="#i-bow" /></svg>
+        <p class="intro-from">Selamat</p>
+        <h1
+          id="introTitle"
+          class="intro-title"
+          aria-label="Happy Birthday, Azizah!"
+        >
+          <span class="t-line t-script" data-split="Happy Birthday,"></span>
+          <span class="t-line t-name" data-split="Azizah!"></span>
+        </h1>
+        <p class="intro-sub">Buka yang di bawah ini zii.</p>
+        <button id="openBtn" class="btn btn-big" type="button">
+          <svg class="btn-ico" aria-hidden="true"><use href="#i-heart" /></svg>
+          <span>Open Your Surprise</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ====== NAVIGASI & MUSIK MINI ====== -->
+    <nav id="nav" class="nav" aria-label="Navigasi halaman" hidden>
+      <a href="#greeting" data-spy="greeting">Ucapan</a>
+      <a href="#gallery" data-spy="gallery">Kenangan</a>
+      <a href="#music" data-spy="music">Musik</a>
+      <a href="#letter" data-spy="letter">Surat</a>
+      <a href="#surprise" data-spy="surprise">Kejutan</a>
+    </nav>
+
+    <button
+      id="miniMusic"
+      class="mini-music"
+      type="button"
+      aria-label="Putar musik"
+      aria-pressed="false"
+      hidden
+    >
+      <svg class="mm-play" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8 5.5v13l11-6.5z" fill="currentColor" />
+      </svg>
+      <svg class="mm-pause" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor" />
+      </svg>
+    </button>
+
+    <main id="main" class="main" hidden>
+      <!-- ====== 2. HALAMAN UCAPAN ====== -->
+      <section id="greeting" class="page" aria-labelledby="greetingTitle">
+        <svg class="deco flower p-f1" style="--petal: #ffc6dc">
+          <use href="#i-flower" />
+        </svg>
+        <svg class="deco flower p-f2" style="--petal: #ffd9e8">
+          <use href="#i-flower" />
+        </svg>
+        <svg class="deco star p-s1"><use href="#i-star" /></svg>
+        <svg class="deco heart p-h1" style="--c: #ffb3cf">
+          <use href="#i-heart" />
+        </svg>
+
+        <header class="page-head reveal">
+          <p class="kicker">untuk kamu, Azizah</p>
+          <h2 id="greetingTitle">Ucapan Kecil dari Hati</h2>
+        </header>
+
+        <article class="card greeting-card reveal">
+          <svg class="card-bow" aria-hidden="true"><use href="#i-bow" /></svg>
+          <p class="salam">Hai, Azizah.</p>
+
+          <p>
+            Happy birthday, Azizah! ❤️ Selamat bertambah usia. Di hari spesial
+            kamu ini, aku berharap semoga semua hal baik selalu menyertai setiap
+            langkahmu. Semoga apa pun yang sedang kamu usahakan bisa tercapai,
+            semua doa yang kamu panjatkan satu per satu menemukan jawabannya,
+            dan semoga kamu selalu diberikan kesehatan serta kebahagiaan. Terima
+            kasih sudah hadir dalam hidup aku dan menjadi bagian dari banyak
+            cerita yang sudah kita lewati. Terima kasih untuk setiap perhatian
+            kecil, waktu, tawa, dan hal-hal sederhana yang mungkin terlihat
+            biasa, tetapi punya arti besar buat aku. Aku tahu perjalanan kita
+            nggak selalu berjalan dengan mudah. Akan ada perbedaan pendapat,
+            salah paham, bahkan mungkin ada hal-hal yang tanpa sengaja membuat
+            kita saling kecewa. Tapi aku berharap kita bisa terus belajar
+            memahami satu sama lain, saling memperbaiki diri, dan tetap
+            menghargai keberadaan masing-masing. Aku mungkin bukan seseorang
+            yang selalu pandai menunjukkan perasaan, tapi aku ingin kamu tahu
+            bahwa kamu adalah seseorang yang sangat berarti buat aku. Aku ingin
+            melihat kamu terus tumbuh menjadi pribadi yang lebih baik, meraih
+            semua impianmu, dan menemukan banyak kebahagiaan dalam hidupmu.
+            Jangan terlalu keras sama diri sendiri, ya. Kalau sedang lelah,
+            istirahatlah. Kalau sedang punya banyak pikiran, jangan dipendam
+            semuanya sendirian. Kamu juga pantas mendapatkan ketenangan setelah
+            semua hal yang sudah kamu perjuangkan. Sekali lagi, selamat ulang
+            tahun, Azizah. Semoga usia baru ini membawa banyak kebahagiaan dan
+            cerita indah untuk kamu. Aku nggak meminta semuanya selalu sempurna,
+            aku hanya berharap kita bisa terus menciptakan kenangan baik dan
+            saling menjadi bagian dari kebahagiaan satu sama lain. Tetap jadi
+            orang yang selalu punya tempat istimewa di hati aku. I'm always
+            wishing the best for you. ❤️ — Dari aku, yang selalu mendoakan
+            hal-hal baik untukmu.
+          </p>
+
+          <p class="sign">Dari,<br /><span>Khosyi</span></p>
+        </article>
+      </section>
+
+      <!-- ====== 3. GALERI FOTO ====== -->
+      <section id="gallery" class="page" aria-labelledby="galleryTitle">
+        <svg class="deco flower p-f3" style="--petal: #ffb9d3">
+          <use href="#i-flower" />
+        </svg>
+        <svg class="deco star p-s2" style="--c: #ffd0e2">
+          <use href="#i-star" />
+        </svg>
+        <svg class="deco heart p-h2"><use href="#i-heart" /></svg>
+
+        <header class="page-head reveal">
+          <p class="kicker">album kecil kita</p>
+          <h2 id="galleryTitle">Kenangan Manis</h2>
+          <p class="page-note">
+            Ini foto dari mana kira kira yaaa???
+          </p>
+        </header>
+
+        <div class="scrapbook">
+          <figure class="polaroid reveal" style="--r: -4deg">
+            <span class="tape"></span>
+            <button class="photo-btn" type="button" aria-label="Tambah foto 1">
+              <img src="./foto_1_4K.jpg" alt="Kenangan 1" loading="lazy" />
+              <span class="ph"
+                ><svg><use href="#i-flower" /></svg
+                ><em>Taruh fotomu di sini</em></span
+              >
+            </button>
+            <figcaption>Si centil</figcaption>
+            <svg class="sticker" style="--c: #ff8fb8">
+              <use href="#i-heart" />
+            </svg>
+          </figure>
+
+          <figure class="polaroid reveal" style="--r: 3deg">
+            <span class="tape t2"></span>
+            <button class="photo-btn" type="button" aria-label="Tambah foto 2">
+              <img src="./foto_2_4K.jpg" alt="Kenangan 2" loading="lazy" />
+              <span class="ph"
+                ><svg><use href="#i-flower" /></svg
+                ><em>Taruh fotomu di sini</em></span
+              >
+            </button>
+            <figcaption>Banyak gaya</figcaption>
+            <svg class="sticker s2"><use href="#i-star" /></svg>
+          </figure>
+
+          <figure class="polaroid reveal" style="--r: -2deg">
+            <span class="tape"></span>
+            <button class="photo-btn" type="button" aria-label="Tambah foto 3">
+              <img src="./foto_3_4K.jpg" alt="Kenangan 3" loading="lazy" />
+              <span class="ph"
+                ><svg><use href="#i-flower" /></svg
+                ><em>Taruh fotomu di sini</em></span
+              >
+            </button>
+            <figcaption>Bocil gemas</figcaption>
+            <svg class="sticker" style="--c: #ffc6dc">
+              <use href="#i-flower" />
+            </svg>
+          </figure>
+
+          <figure class="polaroid reveal" style="--r: 4deg">
+            <span class="tape t2"></span>
+            <button class="photo-btn" type="button" aria-label="Tambah foto 4">
+              <img src="./foto_4_4K.jpg" alt="Kenangan 4" loading="lazy" />
+              <span class="ph"
+                ><svg><use href="#i-flower" /></svg
+                ><em>Taruh fotomu di sini</em></span
+              >
+            </button>
+            <figcaption>Sok anggun</figcaption>
+            <svg class="sticker s2" style="--c: #ffd0e2">
+              <use href="#i-star" />
+            </svg>
+          </figure>
+
+          <figure class="polaroid reveal" style="--r: -3deg">
+            <span class="tape"></span>
+            <button class="photo-btn" type="button" aria-label="Tambah foto 5">
+              <img src="./foto_5_4K.jpg" alt="Kenangan 5" loading="lazy" />
+              <span class="ph"
+                ><svg><use href="#i-flower" /></svg
+                ><em>Taruh fotomu di sini</em></span
+              >
+            </button>
+            <figcaption>Azizah kecil</figcaption>
+            <svg class="sticker"><use href="#i-heart" /></svg>
+          </figure>
+
+          <figure class="polaroid reveal" style="--r: 2deg">
+            <span class="tape t2"></span>
+            <button class="photo-btn" type="button" aria-label="Tambah foto 6">
+              <img src="./foto_6_4K.jpg " alt="Kenangan 6" loading="lazy" />
+              <span class="ph"
+                ><svg><use href="#i-flower" /></svg
+                ><em>Taruh fotomu di sini</em></span
+              >
+            </button>
+            <figcaption>Drama queen</figcaption>
+            <svg class="sticker s2" style="--c: #ffc6dc">
+              <use href="#i-star" />
+            </svg>
+          </figure>
+
+          <figure class="polaroid reveal" style="--r: -3deg">
+            <span class="tape"></span>
+            <button class="photo-btn" type="button" aria-label="Tambah foto 5">
+              <img
+                src="./Screenshot 2026-11-10 210455(1).png"
+                alt="Kenangan 5"
+                loading="lazy"
+              />
+              <span class="ph"
+                ><svg><use href="#i-flower" /></svg
+                ><em>Taruh fotomu di sini</em></span
+              >
+            </button>
+            <figcaption>Bocil pemalu</figcaption>
+            <svg class="sticker"><use href="#i-heart" /></svg>
+          </figure>
+        </div>
+        <input id="photoPicker" type="file" accept="image/*" hidden />
+      </section>
+
+      <!-- ====== 4. HALAMAN MUSIK ====== -->
+      <section id="music" class="page" aria-labelledby="musicTitle">
+        <svg class="deco flower p-f4" style="--petal: #ffd9e8">
+          <use href="#i-flower" />
+        </svg>
+        <svg class="deco heart p-h3" style="--c: #ffb3cf">
+          <use href="#i-heart" />
+        </svg>
+        <svg class="deco star p-s3"><use href="#i-star" /></svg>
+
+        <header class="page-head reveal">
+          <p class="kicker">nyalakan kalau mau</p>
+          <h2 id="musicTitle">Melodi Untukmu</h2>
+        </header>
+
+        <div class="card player reveal">
+          <div class="vinyl" id="vinyl" aria-hidden="true">
+            <div class="vinyl-label">
+              <svg><use href="#i-heart" /></svg>
+            </div>
+          </div>
+          <div class="player-body">
+            <p class="track-title" id="trackTitle">Music Box Lullaby</p>
+            <p class="track-sub" id="trackSub">Melodi lembut untuk Azizah</p>
+            <div class="eq" id="eq" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="player-controls">
+              <button
+                id="playBtn"
+                class="btn play-btn"
+                type="button"
+                aria-pressed="false"
+              >
+                <svg class="pi-play" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 5.5v13l11-6.5z" fill="currentColor" />
+                </svg>
+                <svg class="pi-pause" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor" />
+                </svg>
+                <span id="playLabel">Play</span>
+              </button>
+              <label class="vol">
+                <span class="sr-only">Volume</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor" />
+                </svg>
+                <input
+                  id="vol"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="60"
+                  aria-label="Volume"
+                />
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====== 5. SURAT RAHASIA ====== -->
+      <section id="letter" class="page" aria-labelledby="letterTitle">
+        <svg class="deco flower p-f5" style="--petal: #ffc6dc">
+          <use href="#i-flower" />
+        </svg>
+        <svg class="deco flower p-f6" style="--petal: #ffe3ee">
+          <use href="#i-flower" />
+        </svg>
+        <svg class="deco heart p-h4"><use href="#i-heart" /></svg>
+        <svg class="deco star p-s4" style="--c: #ffd0e2">
+          <use href="#i-star" />
+        </svg>
+
+        <header class="page-head reveal">
+          <p class="kicker">hanya untuk Azizah</p>
+          <h2 id="letterTitle">Surat Rahasia</h2>
+          <p class="page-note" id="envHint">Ketuk amplopnya untuk membuka.</p>
+        </header>
+
+        <div class="env-stage reveal">
+          <button
+            id="envelope"
+            class="envelope"
+            type="button"
+            aria-expanded="false"
+            aria-controls="letterCard"
+            aria-label="Buka amplop surat"
+          >
+            <span class="env-back"></span>
+            <span class="env-paper"></span>
+            <span class="env-front"></span>
+            <span class="env-flap"></span>
+            <span class="seal"
+              ><svg><use href="#i-heart" /></svg
+            ></span>
+            <span class="env-to">Untuk: Azizah</span>
+          </button>
+
+          <div class="letter-wrap" id="letterCard">
+            <div class="letter-clip">
+              <article class="letter">
+                <svg class="letter-flower" style="--petal: #ffc6dc">
+                  <use href="#i-flower" />
+                </svg>
+                <p class="l-line">Untuk Azizah, sahabatku yang baik hati,</p>
+                <p class="l-line">
+                  Hai, Zii. Kalau kamu lagi baca ini, berarti kejutan kecilku
+                  sampai juga ke kamu. Aku bikin website ini diam-diam sambil
+                  deg-degan, takut ketahuan duluan. Hehe.
+                </p>
+                <p class="l-line">
+                  Aku mau bilang terima kasih. Terima kasih sudah jadi teman
+                  yang mau dengerin ceritaku, bahkan waktu ceritanya nggak
+                  penting-penting amat. Terima kasih sudah ada pas aku lagi
+                  seneng, lagi capek, dan lagi bingung. Kamu itu salah satu
+                  orang yang bikin hari-hariku terasa lebih ringan.
+                </p>
+                <p class="l-line">
+                  Aku nggak jago ngomong yang manis-manis secara langsung,
+                  makanya aku tulis aja di sini. Semoga kamu tahu kalau kamu itu
+                  berharga banget, bukan cuma di hari ulang tahun, tapi setiap
+                  hari.
+                </p>
+                <p class="l-line">
+                  Semoga di umur yang baru ini kamu makin bahagia, makin sehat,
+                  dan makin berani ngejar mimpi-mimpimu. Kalau suatu hari kamu
+                  ngerasa capek atau ragu sama diri sendiri, ingat ya, ada aku
+                  yang bakal tetap jadi temanmu.
+                </p>
+                <p class="l-line">
+                  Sekali lagi, selamat ulang tahun, Azizah. Makasih udah jadi
+                  bagian dari ceritaku.
+                </p>
+                <p class="l-line l-sign">
+                  Dengan sayang, sebagai sahabatmu,<br /><span>Khosyi</span>
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====== 6. HALAMAN KEJUTAN ====== -->
+      <section
+        id="surprise"
+        class="page page-last"
+        aria-labelledby="surpriseTitle"
+      >
+        <svg class="deco flower p-f7" style="--petal: #ffd9e8">
+          <use href="#i-flower" />
+        </svg>
+        <svg class="deco flower p-f8" style="--petal: #ffb9d3">
+          <use href="#i-flower" />
+        </svg>
+        <svg class="deco heart p-h5" style="--c: #ffb3cf">
+          <use href="#i-heart" />
+        </svg>
+        <svg class="deco star p-s5"><use href="#i-star" /></svg>
+
+        <header class="page-head reveal">
+          <p class="kicker">hampir selesai</p>
+          <h2 id="surpriseTitle">Satu Kejutan Lagi</h2>
+        </header>
+
+        <div class="surprise-stage reveal">
+          <button id="surpriseBtn" class="btn btn-big" type="button">
+            <svg class="btn-ico" aria-hidden="true"><use href="#i-star" /></svg>
+            <span id="surpriseLabel">Click for One Last Surprise</span>
+          </button>
+
+          <div id="surpriseReveal" class="reveal-box" aria-live="polite">
+            <svg class="rb-bow" aria-hidden="true"><use href="#i-bow" /></svg>
+            <p class="rb-line">
+              Hari ini hari kamu, dan kamu pantas dirayakan.
+            </p>
+            <p class="rb-line">
+              Semoga semua doa baikmu dijawab satu per satu.
+            </p>
+            <p class="rb-line">
+              Terima kasih sudah jadi sahabat yang luar biasa.
+            </p>
+            <h3 class="rb-final">Once Again,<br />Happy Birthday, Azizah!</h3>
+            <p class="rb-from">dari, Khosyi</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <svg class="foot-heart" aria-hidden="true"><use href="#i-heart" /></svg>
+        <p>Dibuat oleh Khosyi, khusus untuk Azizah.</p>
+      </footer>
+    </main>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
